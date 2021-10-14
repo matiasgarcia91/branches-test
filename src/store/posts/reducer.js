@@ -2,6 +2,7 @@
 const initialState = {
   list: [],
   loading: true,
+  details: null,
 };
 
 export default function reducer(state = initialState, action) {
@@ -16,11 +17,11 @@ export default function reducer(state = initialState, action) {
         loading: false,
       };
     }
-    case "posts/SELECT_POST": {
+    case "posts/DETAILS": {
       // action.payload => { 1post }
       return {
         ...state,
-        selected: { ...action.payload },
+        details: { ...action.payload },
       };
     }
     default: {

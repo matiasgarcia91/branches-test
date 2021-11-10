@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = `https://codaisseur-coders-network.herokuapp.com/posts`;
+const API_URL = `https://ourAPI.com/posts`;
 
 export const savePosts = (posts) => ({
   type: "posts/SAVE_POSTS",
@@ -9,6 +9,10 @@ export const savePosts = (posts) => ({
 export const saveDetails = (post) => ({
   type: "posts/DETAILS",
   payload: post, // [{}, {}, {}, {}]
+});
+
+export const newTestAction = () => ({
+  type: "TEST",
 });
 // Normal actions
 // Object => { type, payload }
@@ -27,7 +31,7 @@ export const fetch5Posts = () => async (dispatch, getState) => {
       `${API_URL}?offset=${amountOfPosts}&limit=5`
     );
 
-    console.log("response in thunk", response.data);
+    console.log("this is matias console log", response.data);
 
     const morePosts = response.data.rows; // [{}, {}, {}]
     dispatch(savePosts(morePosts)); // save the data

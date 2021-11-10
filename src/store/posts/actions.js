@@ -1,6 +1,18 @@
 import axios from "axios";
 const API_URL = `https://ourAPI.com/posts`;
 
+/*
+
+ /\                 /\
+/ \'._   (\_/)   _.'/ \
+|.''._'--(o.o)--'_.''.|
+ \_ / `;=/ " \=;` \ _/
+   `\__| \___/ |__/`
+jgs     \(_|_)/
+         " ` "
+
+*/
+
 export const savePosts = (posts) => ({
   type: "posts/SAVE_POSTS",
   payload: posts, // [{}, {}, {}, {}]
@@ -22,6 +34,17 @@ export const newTestAction = () => ({
 // A Thunk Action
 // A function
 // dispatch(fetch5Posts);
+/*
+
+ /\                 /\
+/ \'._   (\_/)   _.'/ \
+|.''._'--(o.o)--'_.''.|
+ \_ / `;=/ " \=;` \ _/
+   `\__| \___/ |__/`
+jgs     \(_|_)/
+         " ` "
+
+*/
 export const fetch5Posts = () => async (dispatch, getState) => {
   try {
     const allState = getState();
@@ -50,4 +73,14 @@ export const fetchPostById = (id) => async (dispatch, getState) => {
   }
 };
 
-// app.get("/test", (req, res) => {});
+/*
+
+ /\                 /\
+/ \'._   (\_/)   _.'/ \
+|.''._'--(o.o)--'_.''.|
+ \_ / `;=/ " \=;` \ _/
+   `\__| \___/ |__/`
+jgs     \(_|_)/
+         " ` "
+
+*/

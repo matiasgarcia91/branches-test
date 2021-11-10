@@ -1,12 +1,12 @@
 import axios from "axios";
 const API_URL = `https://codaisseur-coders-network.herokuapp.com/posts`;
 
-export const savePosts = posts => ({
+export const savePosts = (posts) => ({
   type: "posts/SAVE_POSTS",
   payload: posts, // [{}, {}, {}, {}]
 });
 
-export const saveDetails = post => ({
+export const saveDetails = (post) => ({
   type: "posts/DETAILS",
   payload: post, // [{}, {}, {}, {}]
 });
@@ -36,7 +36,7 @@ export const fetch5Posts = () => async (dispatch, getState) => {
   }
 };
 
-export const fetchPostById = id => async (dispatch, getState) => {
+export const fetchPostById = (id) => async (dispatch, getState) => {
   try {
     const response = await axios.get(`${API_URL}/${id}`);
     console.log(response); // store this somewhere

@@ -1,14 +1,18 @@
 import axios from "axios";
-const API_URL = `https://codaisseur-coders-network.herokuapp.com/posts`;
+const API_URL = `https://ourAPI.com/posts`;
 
-export const savePosts = posts => ({
+export const savePosts = (posts) => ({
   type: "posts/SAVE_POSTS",
   payload: posts, // [{}, {}, {}, {}]
 });
 
-export const saveDetails = post => ({
+export const saveDetails = (post) => ({
   type: "posts/DETAILS",
   payload: post, // [{}, {}, {}, {}]
+});
+
+export const newTestAction = () => ({
+  type: "TEST",
 });
 // Normal actions
 // Object => { type, payload }
@@ -27,7 +31,7 @@ export const fetch5Posts = () => async (dispatch, getState) => {
       `${API_URL}?offset=${amountOfPosts}&limit=5`
     );
 
-    console.log("response in thunk", response.data);
+    console.log("this is matias console log", response.data);
 
     const morePosts = response.data.rows; // [{}, {}, {}]
     dispatch(savePosts(morePosts)); // save the data
@@ -36,7 +40,7 @@ export const fetch5Posts = () => async (dispatch, getState) => {
   }
 };
 
-export const fetchPostById = id => async (dispatch, getState) => {
+export const fetchPostById = (id) => async (dispatch, getState) => {
   try {
     const response = await axios.get(`${API_URL}/${id}`);
     console.log(response); // store this somewhere
@@ -45,18 +49,3 @@ export const fetchPostById = id => async (dispatch, getState) => {
     console.log(e.message);
   }
 };
-
-// app.get("/test", (req, res) => {});
-
-// function createThunkMiddleware(extraArgument) {
-//   return ({ dispatch, getState }) =>
-//     next =>
-//     action => {
-//       if (typeof action === "function") {
-//         // action => fetch5Posts
-//         return action(dispatch, getState, extraArgument); // function actions => RUN.
-//       }
-
-//       return next(action); // non function actions => next => to the store!
-//     };
-// }

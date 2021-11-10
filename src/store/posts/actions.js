@@ -18,7 +18,7 @@ export const saveDetails = (post) => ({
 // A Thunk Action
 // A function
 // dispatch(fetch5Posts);
-export const fetch5Posts = () => async (dispatch, getState) => {
+export const fetch6Posts = () => async (dispatch, getState) => {
   try {
     const allState = getState();
     const amountOfPosts = allState.posts.list.length;

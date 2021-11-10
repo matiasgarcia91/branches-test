@@ -18,13 +18,13 @@ export const saveDetails = post => ({
 // A Thunk Action
 // A function
 // dispatch(fetch5Posts);
-export const fetch5Posts = () => async (dispatch, getState) => {
+export const fetch3Posts = () => async (dispatch, getState) => {
   try {
     const allState = getState();
     const amountOfPosts = allState.posts.list.length;
 
     const response = await axios.get(
-      `${API_URL}?offset=${amountOfPosts}&limit=5`
+      `${API_URL}?offset=${amountOfPosts}&limit=3`
     );
 
     console.log("response in thunk", response.data);

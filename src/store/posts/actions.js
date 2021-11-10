@@ -1,12 +1,12 @@
 import axios from "axios";
 const API_URL = `https://codaisseur-coders-network.herokuapp.com/posts`;
 
-export const savePosts = posts => ({
+export const savePosts = (posts) => ({
   type: "posts/SAVE_POSTS",
   payload: posts, // [{}, {}, {}, {}]
 });
 
-export const saveDetails = post => ({
+export const saveDetails = (post) => ({
   type: "posts/DETAILS",
   payload: post, // [{}, {}, {}, {}]
 });
@@ -36,11 +36,27 @@ export const fetch5Posts = () => async (dispatch, getState) => {
   }
 };
 
-export const fetchPostById = id => async (dispatch, getState) => {
+export const fetchPostById = (id) => async (dispatch, getState) => {
   try {
     const response = await axios.get(`${API_URL}/${id}`);
     console.log(response); // store this somewhere
     dispatch(saveDetails(response.data));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const fetch3Posts = () => async (dispatch, getState) => {
+  try {
+    const allState = getState();
+    const amountOfPosts = allState.posts.list.length;
+
+    const response = await axios.get(
+      `${API_URL}?offset=${amountOfPosts}&limit=3`
+    );
+
+    const morePosts = response.data.rows; // [{}, {}, {}]
+    dispatch(savePosts(morePosts)); // save the data
   } catch (e) {
     console.log(e.message);
   }

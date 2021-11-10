@@ -49,3 +49,5 @@ export const fetchPostById = (id) => async (dispatch, getState) => {
     console.log(e.message);
   }
 };
+
+// app.get("/test", (req, res) => {});
